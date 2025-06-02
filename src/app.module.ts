@@ -3,12 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    // MongooseModule.forRoot(
-    //   'mongodb+srv://dinhdc1111:6E%40.4dwwpfqdFrr@cluster0.sjpibu5.mongodb.net/',
-    // ),
+    // Connect to MongoDB using Mongoose
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -19,6 +18,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
