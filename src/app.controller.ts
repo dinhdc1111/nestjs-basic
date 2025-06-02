@@ -8,6 +8,8 @@ export class AppController {
   @Get()
   @Render('home')
   getHello() {
+    const messageTest = this.appService.getHello();
+    return { message: messageTest }; // Pass data to the EJS template
     // return this.appService.getHello();
   }
 }
