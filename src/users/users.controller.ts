@@ -8,8 +8,8 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  create(@Body("email") email: string, @Body("password") password: string,) {
+    return this.usersService.create({ email, password });
   }
 
   @Get()
